@@ -12,7 +12,7 @@ Student No: 300948195
 */
 public partial class BookDetails : System.Web.UI.Page
 {
-   
+
     protected void Page_PreInit(object sender, EventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
@@ -36,7 +36,7 @@ public partial class BookDetails : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("*****INSIDE BOOKDETAILS:Page_Load*****");
+        System.Diagnostics.Debug.WriteLine("*****INSIDE BOOKDETAILS:Page_Load******");
         if (!IsPostBack)
         {
             BindDetails();
@@ -69,7 +69,7 @@ public partial class BookDetails : System.Web.UI.Page
     }
     protected void bookDetailsGrid_ModeChanging(object sender, DetailsViewModeEventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("*****INSIDE BOOKDETAILS:bookDetailsGrid_ModeChanging*****"); 
+        System.Diagnostics.Debug.WriteLine("*****INSIDE BOOKDETAILS:bookDetailsGrid_ModeChanging*****");
 
         bookDetailsGrid.ChangeMode(e.NewMode);
         BindDetails();
@@ -126,7 +126,7 @@ public partial class BookDetails : System.Web.UI.Page
 
     protected void bookDetailsGrid_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
     {
-        
+
         int bookId = Convert.ToInt32(Request.QueryString["Book_ID"]);
         TextBox newNameTextBox =
            (TextBox)bookDetailsGrid.FindControl("editNameTextBox");
@@ -221,7 +221,7 @@ public partial class BookDetails : System.Web.UI.Page
 
             Response.Redirect("Books.aspx");
             Server.Transfer(Request.Path);
-        }        
+        }
     }
 
     protected void bookDetailsGrid_ItemCreated(object sender, EventArgs e)
