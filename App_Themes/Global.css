@@ -1,0 +1,122 @@
+﻿div.container {
+    height: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+div.container p {
+    margin: 0
+}
+
+.btn-xl {
+    font-size: 20px;
+    font-family: 'Lobster', cursive;
+}
+
+.btn-sample-lighttheme {
+    color: #7e0000;
+    background-color: #FFFFFF;
+    border-color: #7e0000;
+    height:100px;
+    width:250px;
+    
+}
+
+    .btn-sample-lighttheme:hover,
+    .btn-sample-lighttheme:focus,
+    .btn-sample-lighttheme:active,
+    .btn-sample-lighttheme.active,
+    .open .dropdown-toggle.btn-sample-lighttheme {
+        color: #7e0000;
+        background-color: #fbf4e9;
+        border-color: #7e0000;
+    }
+
+    .btn-sample-lighttheme:active,
+    .btn-sample-lighttheme.active,
+    .open .dropdown-toggle.btn-sample-lighttheme {
+        background-image: none;
+    }
+
+    .btn-sample-lighttheme.disabled,
+    .btn-sample-lighttheme[disabled],
+    fieldset[disabled] .btn-sample-lighttheme,
+    .btn-sample-lighttheme.disabled:hover,
+    .btn-sample-lighttheme[disabled]:hover,
+    fieldset[disabled] .btn-sample-lighttheme:hover,
+    .btn-sample-lighttheme.disabled:focus,
+    .btn-sample-lighttheme[disabled]:focus,
+    fieldset[disabled] .btn-sample-lighttheme:focus,
+    .btn-sample-lighttheme.disabled:active,
+    .btn-sample-lighttheme[disabled]:active,
+    fieldset[disabled] .btn-sample-lighttheme:active,
+    .btn-sample-lighttheme.disabled.active,
+    .btn-sample-lighttheme[disabled].active,
+    fieldset[disabled] .btn-sample-lighttheme.active {
+        background-color: #FFFFFF;
+        border-color: #7e0000;
+    }
+
+    .btn-sample-lighttheme .badge {
+        color: #FFFFFF;
+        background-color: #7e0000;
+    }
+
+
+.btn-sample-darktheme {
+    color: #8CFFFB;
+    background-color: #1C1C1C;
+    border-color: #8CFFFB;
+    height: 100px;
+    width: 250px;
+}
+
+    .btn-sample-darktheme:hover,
+    .btn-sample-darktheme:focus,
+    .btn-sample-darktheme:active,
+    .btn-sample-darktheme.active,
+    .open .dropdown-toggle.btn-sample-darktheme {
+        color: #8CFFFB;
+        background-color: #000000;
+        border-color: #8CFFFB;
+    }
+
+    .btn-sample-darktheme:active,
+    .btn-sample-darktheme.active,
+    .open .dropdown-toggle.btn-sample-darktheme {
+        background-image: none;
+    }
+
+    .btn-sample-darktheme.disabled,
+    .btn-sample-darktheme[disabled],
+    fieldset[disabled] .btn-sample-darktheme,
+    .btn-sample-darktheme.disabled:hover,
+    .btn-sample-darktheme[disabled]:hover,
+    fieldset[disabled] .btn-sample-darktheme:hover,
+    .btn-sample-darktheme.disabled:focus,
+    .btn-sample-darktheme[disabled]:focus,
+    fieldset[disabled] .btn-sample-darktheme:focus,
+    .btn-sample-darktheme.disabled:active,
+    .btn-sample-darktheme[disabled]:active,
+    fieldset[disabled] .btn-sample-darktheme:active,
+    .btn-sample-darktheme.disabled.active,
+    .btn-sample-darktheme[disabled].active,
+    fieldset[disabled] .btn-sample-darktheme.active {
+        background-color: #1C1C1C;
+        border-color: #8CFFFB;
+    }
+
+    .btn-sample-darktheme .badge {
+        color: #1C1C1C;
+        background-color: #8CFFFB;
+    }
+
+.Footer {
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+    background-repeat: repeat-x;
+    font-size: 15px;
+    color: aliceblue;
+    font-family: 'Raleway', sans-serif;
+}

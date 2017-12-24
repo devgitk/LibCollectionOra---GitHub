@@ -1,0 +1,107 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LibraryCollection.master.cs" Inherits="LibraryCollection" %>
+
+<!DOCTYPE html>
+
+<!--Name: Keshav Sridhara
+Student No: 300948195-->
+
+<html>
+<head runat="server">
+    <title>Library Collection</title>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="App_Themes/Library/bootstrap-3.3.0/dist/css/bootstrap.min.css"/>       <!-- Bootstrap Lib-->
+    <script src="App_Themes/Library/jquery-3.1.0.min.js"></script>                                      <!-- jQuery Lib-->
+    <script src="App_Themes/Library/bootstrap-3.3.0/dist/js/bootstrap.min.js"></script>    
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway:600i" rel="stylesheet">         <!-- Google Fonts-->
+    <link rel="stylesheet" href="App_Themes/Library/bootstrap-3.3.0/dist/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+          var trigger = $('.hamburger'),
+              overlay = $('.overlay'),
+             isClosed = false;
+
+            trigger.click(function () {
+              hamburger_cross();      
+            });
+
+            function hamburger_cross() {
+
+              if (isClosed == true) {          
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+              } else {   
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+              }
+          }
+  
+          $('[data-toggle="offcanvas"]').click(function () {
+                $('#wrapper').toggleClass('toggled');
+          });  
+        });
+
+                     
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+        <div class="overlay"></div>
+        <!-- Menu Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       <span class="text">Library Collection</span>
+                    </a>
+                </li>
+                <li runat="server">
+                    <a href="Default.aspx" class="text" id="HomeMenuId" runat="server">Home</a>
+                </li> 
+                <li runat="server">
+                    <a href="Books.aspx" class="text" id="BooksMenuId" runat="server">Books</a>
+                </li>
+                <li runat="server">
+                    <a href="Search.aspx" class="text" id="SearchMenuId" runat="server">Search</a>
+                </li>
+            </ul>
+        </nav>
+        <!--Name: Keshav Sridhara
+        Student No: 300948195-->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas" title="Menu">          <!-- Menu -->
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <!-- Content -->
+                        <!--<div class="Content" id="ContentId">-->
+                            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+    <!-- Footer -->
+    <div class="Footer">
+         &copy; LibraryCollection 2017
+    </div>
+    </form>
+</body>
+</html>
+<!--Name: Keshav Sridhara
+Student No: 300948195-->

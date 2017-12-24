@@ -1,0 +1,2 @@
+C:\Users\sridh\Documents\College_Work\Studies\Semester 1\COMP 214 - Advance Database Concepts\FinalProject\SourceCodeFinalProject\LibCollectionOra\obj\x86\Debug\LibCollectionOra.csprojResolveAssemblyReference.cache
+C:\Users\sridh\Documents\College_Work\Studies\Semester 1\COMP 214 - Advance Database Concepts\FinalProject\SourceCodeFinalProject\LibCollectionOra\obj\x86\Debug\LibCollectionOra.csproj.CoreCompileInputs.cache
