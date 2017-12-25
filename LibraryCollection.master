@@ -69,6 +69,9 @@ Student No: 300948195-->
                     <a href="Books.aspx" class="text" id="BooksMenuId" runat="server">Books</a>
                 </li>
                 <li runat="server">
+                    <a href="Friends.aspx" class="text" id="A1" runat="server">Friends</a>
+                </li>
+                <li runat="server">
                     <a href="Search.aspx" class="text" id="SearchMenuId" runat="server">Search</a>
                 </li>
             </ul>
