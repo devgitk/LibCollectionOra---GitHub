@@ -20,25 +20,24 @@ public partial class Search : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-        {   /*
+        {   
             OracleConnection oConn = GetConnection();
-            OracleCommand genreListCommand = new OracleCommand("SELECT DISTINCT(Genre) FROM Books WHERE Genre IS NOT NULL", oConn);
-            OracleCommand FriendsListCommand = new OracleCommand("SELECT DISTINCT(Name_Of_Friend) FROM Books " +
-                                                                 "WHERE Name_Of_Friend IS NOT NULL", oConn);
+            OracleCommand genreListCommand = new OracleCommand("SELECT DISTINCT(NAME) FROM GENRE WHERE NAME IS NOT NULL", oConn);
+            OracleCommand FriendsListCommand = new OracleCommand("SELECT DISTINCT(NAME) FROM FRIEND WHERE NAME IS NOT NULL", oConn);
             try
             {
                 oConn.Open();
                 OracleDataReader reader = genreListCommand.ExecuteReader();
                 searchGenreDdId.DataSource = reader;
-                searchGenreDdId.DataValueField = "Genre";
-                searchGenreDdId.DataTextField = "Genre";
+                searchGenreDdId.DataValueField = "Name";
+                searchGenreDdId.DataTextField = "Name";
                 searchGenreDdId.DataBind();
                 searchGenreDdId.Items.Insert(0, new ListItem("All", "All"));
 
                 reader = FriendsListCommand.ExecuteReader();
                 searchFriendNameDdId.DataSource = reader;
-                searchFriendNameDdId.DataValueField = "Name_Of_Friend";
-                searchFriendNameDdId.DataTextField = "Name_Of_Friend";
+                searchFriendNameDdId.DataValueField = "Name";
+                searchFriendNameDdId.DataTextField = "Name";
                 searchFriendNameDdId.DataBind();
                 searchFriendNameDdId.Items.Insert(0, new ListItem("All", "All"));
 
@@ -46,7 +45,7 @@ public partial class Search : System.Web.UI.Page
             finally
             {
                 oConn.Close();
-            }*/
+            }
         }
     }
     protected void Page_PreInit(object sender, EventArgs e)
@@ -74,28 +73,45 @@ public partial class Search : System.Web.UI.Page
 
         if (searchGenreDdId.SelectedValue == "All" && searchFriendNameDdId.SelectedValue == "All")
         {
-            oCmd = new OracleCommand("SELECT Name, Author, ISBN_Number, Genre, Name_Of_Friend " +
-                                                    "FROM Books", oConn);
+            oCmd = new OracleCommand("SELECT b.name BOOKNAME, f.name FRIENDNAME, rent_status, g.name Genre, r.rent_id  " +
+                                     "FROM rent r, rent_details rd, books b, friend f, genre g  " +
+                                     "WHERE r.rent_id = rd.rent_id " +
+                                     "AND b.book_id = rd.rent_id " +
+                                     "AND f.friend_id = r.friend_id " +
+                                     "AND g.genre_id = b.genre_id", oConn);
 
         }
         else if (searchGenreDdId.SelectedValue == "All" && searchFriendNameDdId.SelectedValue != null)
         {
 
-            oCmd = new OracleCommand("SELECT Name, Author, ISBN_Number, Genre, Name_Of_Friend " +
-                                                    "FROM Books " +
-                                                    "WHERE Name_Of_Friend = '" + searchFriendNameDdId.SelectedValue + "' ", oConn);
+            oCmd = new OracleCommand("SELECT b.name BOOKNAME, f.name FRIENDNAME, rent_status, g.name Genre, r.rent_id  " +
+                                    "FROM rent r, rent_details rd, books b, friend f, genre g  " +
+                                    "WHERE r.rent_id = rd.rent_id " +
+                                    "AND b.book_id = rd.rent_id " +
+                                    "AND f.friend_id = r.friend_id " +
+                                    "AND g.genre_id = b.genre_id " +
+                                    "AND f.name = '" + searchFriendNameDdId.SelectedValue + "' ", oConn);
         }
         else if (searchGenreDdId.SelectedValue != null && searchFriendNameDdId.SelectedValue == "All")
         {
-            oCmd = new OracleCommand("SELECT Name, Author, ISBN_Number, Genre, Name_Of_Friend " +
-                                                    "FROM Books " +
-                                                    "WHERE Genre = '" + searchGenreDdId.SelectedValue + "'", oConn);
+            oCmd = new OracleCommand("SELECT b.name BOOKNAME, f.name FRIENDNAME, rent_status, g.name Genre, r.rent_id  " +
+                                    "FROM rent r, rent_details rd, books b, genre g, friend f " +
+                                    "WHERE r.rent_id = rd.rent_id " +
+                                    "AND b.book_id = rd.rent_id " +
+                                    "AND f.friend_id = r.friend_id " +
+                                    "AND g.genre_id = b.genre_id " +
+                                    "AND g.name = '" + searchGenreDdId.SelectedValue + "'", oConn);
         }
         else
         {
-            oCmd = new OracleCommand("SELECT Name, Author, ISBN_Number, Genre, Name_Of_Friend " +
-                                                    "FROM Books " + 
-                                                    "WHERE Genre = '" + searchGenreDdId.SelectedValue + "' AND Name_Of_Friend = '"+ searchFriendNameDdId.SelectedValue + "' ", oConn);
+            oCmd = new OracleCommand("SELECT b.name BOOKNAME, f.name FRIENDNAME, rent_status, g.name Genre, r.rent_id  " +
+                                    "FROM rent r, rent_details rd, books b, friend f, genre g  " +
+                                    "WHERE r.rent_id = rd.rent_id " +
+                                    "AND b.book_id = rd.rent_id " +
+                                    "AND f.friend_id = r.friend_id " +
+                                    "AND g.genre_id = b.genre_id " +
+                                    "AND g.name = '" + searchGenreDdId.SelectedValue + "' " +
+                                    "AND f.name = '" + searchFriendNameDdId.SelectedValue + "' ", oConn);
         }
 
         System.Diagnostics.Debug.WriteLine("*****INSIDE searchBtnId_Click:*****" + oCmd.CommandText);
@@ -104,7 +120,6 @@ public partial class Search : System.Web.UI.Page
             oConn.Open();            
             OracleDataReader reader = oCmd.ExecuteReader();
             searchedItemsGrid.DataSource = reader;
-            searchedItemsGrid.DataKeyNames = new string[] { "Name" };
             searchedItemsGrid.DataBind();
             reader.Close();
         }

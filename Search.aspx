@@ -30,11 +30,10 @@ Student No: 300948195--%>
      </div>
      <asp:GridView ID="searchedItemsGrid" runat="server" GridLines="Horizontal"  AllowSorting="true" AutoGenerateColumns="False" Width="120%" CssClass="RalewayFont paragraph">
         <Columns>            
-            <asp:BoundField DataField="Name" HeaderText="Name" HeaderStyle-Font-Size="Larger" />
-            <asp:BoundField DataField="Author" HeaderText="Author" HeaderStyle-Font-Size="Larger" />
-            <%--<asp:BoundField DataField="ISBN_Number" HeaderText="ISBN Number"/>--%>
-            <asp:BoundField DataField="Genre" HeaderText="Genre" HeaderStyle-Font-Size="Larger"/>
-            <asp:BoundField DataField="Name_Of_Friend" HeaderText="Name of friend" HeaderStyle-Font-Size="Larger" />
+            <asp:HyperLinkField DataTextField="BOOKNAME" DataNavigateUrlFields="Rent_ID" DataNavigateUrlFormatString="~/RentDetails.aspx?Rent_ID={0}" DataTextFormatString="{0}" HeaderText="Book Name" HeaderStyle-Font-Size="Larger" />            
+            <asp:BoundField DataField="Genre" HeaderText="Genre"  HeaderStyle-Font-Size="Larger" />
+            <asp:BoundField DataField="FRIENDNAME" HeaderText="Friend" HeaderStyle-Font-Size="Larger" />
+            <asp:BoundField DataField="rent_status" HeaderText="Status" HeaderStyle-Font-Size="Larger"/>
         </Columns>
      </asp:GridView>
 </asp:Content>
