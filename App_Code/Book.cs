@@ -10,9 +10,9 @@ using System.Web;
 /// <summary>
 /// Summary description for BookDetails
 /// </summary>
-public class BookDetails
+public class Book
 {
-	public BookDetails()
+	public Book()
 	{
 		//
 		// TODO: Add constructor logic here

@@ -4,37 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System.Configuration;
-public partial class Friends : System.Web.UI.Page
+public partial class Friends : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             BindGrid();
-        }
-    }
-
-    private OracleConnection GetConnection()
-    {
-        var conString = System.Configuration.ConfigurationManager.ConnectionStrings["LibCollectionOracleCenCol"];
-        string strConnString = conString.ConnectionString;
-        return new OracleConnection(strConnString);
-    }
-
-    protected void Page_PreInit(object sender, EventArgs e)
-    {
-        System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
-
-        if (Session["ThemeSessionValue"] != null)
-        {
-            Page.Theme = (String)Session["ThemeSessionValue"];
-        }
-        else
-        {
-            Session["ThemeSessionValue"] = "DarkTheme";
-            Page.Theme = (string)Session["ThemeSessionValue"];
         }
     }
 

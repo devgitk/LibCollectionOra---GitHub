@@ -6,25 +6,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 /*
 Name: Keshav Sridhara
 Student No: 300948195
 */
-public partial class AddBook : System.Web.UI.Page
+public partial class AddBook : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         
     }
-    private OracleConnection GetConnection()
-    {
-        var conString = System.Configuration.ConfigurationManager.ConnectionStrings["LibCollectionOracleCenCol"];
-        string strConnString = conString.ConnectionString;
-        return new OracleConnection(strConnString);
-    }
-
 
     protected void saveBtnId_Click(object sender, EventArgs e)
     {
@@ -74,6 +67,7 @@ public partial class AddBook : System.Web.UI.Page
             {
                 oConn.Open();
                 oCmd.ExecuteNonQuery();
+                CreateAuditInsertRecord(oCmd.Parameters, "INSERT_BOOKS_PRC");
                 Response.Redirect("Books.aspx");
             }
             catch(Exception ex)
@@ -101,22 +95,7 @@ public partial class AddBook : System.Web.UI.Page
     {
         Response.Redirect("AddBook.aspx");
     }
-        
-    protected void Page_PreInit(object sender, EventArgs e)
-    {
-        System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
 
-        if (Session["ThemeSessionValue"] != null)
-        {
-            Page.Theme = (String)Session["ThemeSessionValue"];
-        }
-        else
-        {
-            Session["ThemeSessionValue"] = "DarkTheme";
-            Page.Theme = (string)Session["ThemeSessionValue"];
-        }        
-    }
-   
     protected void btnHome_Click(object sender, EventArgs e)
     {
         if (Session["ThemeSessionValue"] != null)
