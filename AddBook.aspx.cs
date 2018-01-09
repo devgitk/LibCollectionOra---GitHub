@@ -67,6 +67,7 @@ public partial class AddBook : BasePage
             {
                 oConn.Open();
                 oCmd.ExecuteNonQuery();
+                CreateAuditInsertRecord(oCmd.Parameters, "INSERT_BOOKS_PRC");
                 Response.Redirect("Books.aspx");
             }
             catch(Exception ex)

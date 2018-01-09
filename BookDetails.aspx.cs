@@ -80,6 +80,7 @@ public partial class BookDetails : BasePage
         {
             oConn.Open();
             oCmd.ExecuteNonQuery();
+            CreateAuditDeleteRecord(oCmd.Parameters, "DELETE_BOOKS_PRC");
         }
         catch (Exception ex)
         {
@@ -171,6 +172,7 @@ public partial class BookDetails : BasePage
         {
             oConn.Open();
             oCmd.ExecuteNonQuery();
+            CreateAuditUpdateRecord(oCmd.Parameters, "UPDATE_BOOKS_PRC");
         }
         catch (Exception ex)
         {

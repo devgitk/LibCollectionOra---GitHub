@@ -78,6 +78,7 @@ public partial class FriendDetails : BasePage
         {
             oConn.Open();
             oCmd.ExecuteNonQuery();
+            CreateAuditUpdateRecord(oCmd.Parameters, "DELETE_FRIENDS_PRC");
         }
         catch (Exception ex)
         {
@@ -139,6 +140,8 @@ public partial class FriendDetails : BasePage
         {
             oConn.Open();
             oCmd.ExecuteNonQuery();
+            CreateAuditUpdateRecord(oCmd.Parameters, "UPDATE_FRIENDS_PRC");
+
         }
         catch (Exception ex)
         {

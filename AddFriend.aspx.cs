@@ -50,6 +50,7 @@ public partial class AddFriend : BasePage
             {
                 oConn.Open();
                 oCmd.ExecuteNonQuery();
+                CreateAuditInsertRecord(oCmd.Parameters, "INSERT_FRIENDS_PRC");
                 Response.Redirect("Friends.aspx");
             }
             catch (Exception ex)
