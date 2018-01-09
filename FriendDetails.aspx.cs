@@ -10,14 +10,8 @@ using System.Data;
 Name: Keshav Sridhara
 Student No: 300948195
 */
-public partial class FriendDetails : System.Web.UI.Page
+public partial class FriendDetails : BasePage
 {
-    private OracleConnection GetConnection()
-    {
-        var conString = System.Configuration.ConfigurationManager.ConnectionStrings["LibCollectionOracleCenCol"];
-        string strConnString = conString.ConnectionString;
-        return new OracleConnection(strConnString);
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("*****INSIDE FRIENDDETAILS:Page_Load*****");

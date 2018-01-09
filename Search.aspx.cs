@@ -9,14 +9,8 @@ using Oracle.ManagedDataAccess.Client;
  Name: Keshav Sridhara
  Student No: 300948195
  */
-public partial class Search : System.Web.UI.Page
+public partial class Search : BasePage
 {
-    private OracleConnection GetConnection()
-    {
-        var conString = System.Configuration.ConfigurationManager.ConnectionStrings["LibCollectionOracleCenCol"];
-        string strConnString = conString.ConnectionString;
-        return new OracleConnection(strConnString);
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -46,20 +40,6 @@ public partial class Search : System.Web.UI.Page
             {
                 oConn.Close();
             }
-        }
-    }
-    protected void Page_PreInit(object sender, EventArgs e)
-    {
-        //System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
-
-        if (Session["ThemeSessionValue"] != null)
-        {
-            Page.Theme = (String)Session["ThemeSessionValue"];
-        }
-        else
-        {
-            Session["ThemeSessionValue"] = "DarkTheme";
-            Page.Theme = (string)Session["ThemeSessionValue"];
         }
     }
 
