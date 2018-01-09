@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 using System.Data;
 /*
 Name: Keshav Sridhara
@@ -12,21 +12,6 @@ Student No: 300948195
 */
 public partial class FriendDetails : System.Web.UI.Page
 {
-    protected void Page_PreInit(object sender, EventArgs e)
-    {
-        System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
-
-        if (Session["ThemeSessionValue"] != null)
-        {
-            Page.Theme = (String)Session["ThemeSessionValue"];
-        }
-        else
-        {
-            Session["ThemeSessionValue"] = "DarkTheme";
-            Page.Theme = (string)Session["ThemeSessionValue"];
-        }
-    }
-
     private OracleConnection GetConnection()
     {
         var conString = System.Configuration.ConfigurationManager.ConnectionStrings["LibCollectionOracleCenCol"];

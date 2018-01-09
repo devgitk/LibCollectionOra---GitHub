@@ -19,9 +19,9 @@ public class BookDetailsRepository
 		// TODO: Add constructor logic here
 		//
 	}
-    public List<BookDetails> GetAllBooks()
+    public List<Book> GetAllBooks()
     {
-        return (List<BookDetails>)HttpContext.Current.Application["bookDetailsRep"];
+        return (List<Book>)HttpContext.Current.Application["bookDetailsRep"];
     }
 }
 /*

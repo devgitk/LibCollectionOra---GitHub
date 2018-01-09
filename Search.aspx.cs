@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Oracle.DataAccess.Client;
+using Oracle.ManagedDataAccess.Client;
 /*
  Name: Keshav Sridhara
  Student No: 300948195
@@ -50,7 +50,7 @@ public partial class Search : System.Web.UI.Page
     }
     protected void Page_PreInit(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
+        //System.Diagnostics.Debug.WriteLine("Inside Page_PreInit: " + Session["ThemeSessionValue"].ToString());
 
         if (Session["ThemeSessionValue"] != null)
         {
